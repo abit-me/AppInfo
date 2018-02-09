@@ -1,0 +1,11 @@
+Package: me.abit.appinfo
+Name: AppInfo
+Depends: 
+Architecture: iphoneos-arm
+Description: An awesome tool of some sort!!
+Maintainer: A
+Author: A
+Section: System
+Tag: role::hacker
+Version: 0.0.1-13
+Installed-Size: 132
