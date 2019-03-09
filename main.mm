@@ -9,8 +9,8 @@ int main(int argc, char **argv, char **envp) {
 		printf("\n");
 		printf("appName:    %s\n", [[app valueForKey:@"appName"] UTF8String]);
 		printf("bundleID:   %s\n", [[app valueForKey:@"bundleID"] UTF8String]);
-		printf("bundlePath: %s\n", [[[app valueForKey:@"bundlePath"] absoluteString] UTF8String]);
-		printf("dataPath:   %s\n", [[[app valueForKey:@"dataPath"] absoluteString] UTF8String]);
+		printf("bundlePath: %s\n", [[app valueForKey:@"bundlePath"] UTF8String]);
+		printf("dataPath:   %s\n", [[app valueForKey:@"dataPath"] UTF8String]);
 	}
 	return 0;
 }
