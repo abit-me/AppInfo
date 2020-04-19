@@ -65,6 +65,7 @@
 
 @interface LSBundleProxy : LSResourceProxy
 @property (nonatomic, readonly) NSString *localizedShortName;
+@property (nonatomic, readonly) NSString *bundleExecutable;
 @end
 
 

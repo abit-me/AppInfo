@@ -13,21 +13,24 @@ int main(int argc, char **argv, char **envp) {
 	{
 		printf("----------------------------------------------------------------------------------------------------\n");
         printf(COLOR_BLUE);
-        printf("AppName:        ");
+        printf("name:           ");
         printf(COLOR_RESET);
-		printf("%s\n", [[app valueForKey:@"appName"] UTF8String]);
+		printf("%s\n", [[app valueForKey:@"app_name"] UTF8String]);
         printf(COLOR_YELLOW);
-        printf("BundleID:       ");
+        printf("executable:     ");
         printf(COLOR_RESET);
-		printf("%s\n", [[app valueForKey:@"bundleID"] UTF8String]);
+        printf("%s\n", [[app valueForKey:@"app_bundle_executable"] UTF8String]);
+        printf("bundle_id:      ");
+        printf(COLOR_RESET);
+		printf("%s\n", [[app valueForKey:@"app_bundle_id"] UTF8String]);
         printf(COLOR_GREEN);
-        printf("HomePath:       ");
+        printf("home_path:      ");
         printf(COLOR_RESET);
-        printf("%s\n", [[app valueForKey:@"dataPath"] UTF8String]);
+        printf("%s\n", [[app valueForKey:@"app_data_path"] UTF8String]);
         printf(COLOR_CYAN);
-        printf("BundlePath:     ");
+        printf("bundle_path:    ");
         printf(COLOR_RESET);
-		printf("%s\n", [[app valueForKey:@"bundlePath"] UTF8String]);
+		printf("%s\n", [[app valueForKey:@"app_bundle_path"] UTF8String]);
 	}
     printf("----------------------------------------------------------------------------------------------------\n");
 	return 0;

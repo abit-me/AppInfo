@@ -13,32 +13,31 @@
 @implementation AppInfo
 
 + (NSArray *)installedAppsProxy {
-
+    
     LSApplicationWorkspace *workspace = [NSClassFromString(@"LSApplicationWorkspace") defaultWorkspace];
     NSArray *proxies = [workspace applicationsOfType:0]; // LSApplicationProxy
     return proxies;
 }
 
-+ (NSArray *)installedApps {
++ (NSArray *)installedAppsInfos {
     
     NSMutableArray *arr = [NSMutableArray new];
-    for (LSApplicationProxy *proxy in [self installedAppsProxy])
-    {
-        NSDictionary *dic = @{@"name" : [proxy localizedName], @"bundle_id" : [proxy applicationIdentifier]};
-        [arr addObject:dic];
+    NSArray *appsProxy = [self installedAppsProxy];
+    for (LSApplicationProxy *proxy in appsProxy) {
+        
+        NSMutableDictionary *dict = [NSMutableDictionary new];
+        [dict setValue:[proxy applicationIdentifier] forKey:@"app_bundle_id"];
+        [dict setValue:[proxy localizedName] forKey:@"app_name"];
+        [dict setValue:[[proxy bundleContainerURL] path] forKey:@"app_bundle_path"];
+        [dict setValue:[[proxy dataContainerURL] path] forKey:@"app_data_path"];
+        [dict setValue:[proxy bundleExecutable] forKey:@"app_bundle_executable"];
+        [arr addObject:dict];
     }
-    return arr;
-}
-
-+ (NSArray *)installedAppsInfos {
-
-    NSMutableArray *arr = [NSMutableArray new];
-    for (LSApplicationProxy *proxy in [self installedAppsProxy])
-    {
-        NSDictionary *dic = @{@"bundleID" : [proxy applicationIdentifier], @"appName" : [proxy localizedName],
-                              @"bundlePath" : [proxy bundleContainerURL].path, @"dataPath" : [proxy dataContainerURL].path};
-        [arr addObject:dic];
-    }
+    [arr sortUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
+        NSString *appName1 = [obj1 valueForKey:@"app_name"];
+        NSString *appName2 = [obj2 valueForKey:@"app_name"];
+        return [appName1 compare:appName2];
+    }];
     return arr;
 }
 

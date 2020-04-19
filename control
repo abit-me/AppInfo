@@ -1,7 +1,7 @@
 Package: me.abit.appinfo
 Name: AppInfo
 Depends: 
-Version: 0.0.7
+Version: 0.0.8
 Architecture: iphoneos-arm
 Description: An awesome tool of some sort!!
 Maintainer: A
